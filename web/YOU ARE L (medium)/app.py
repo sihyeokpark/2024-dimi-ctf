@@ -1,12 +1,13 @@
 from flask import Flask, request
 from hashlib import md5
-from os import urandom
+from os import urandom, remove
 import subprocess
 
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
-FLAG = 'DIMI{doY0uKnowFilePr0toco1?}'
+FLAG = open('./flag.txt','r').read()
+remove('./flag.txt')
 
 secret = open('./secret.txt', 'r').read()
 
