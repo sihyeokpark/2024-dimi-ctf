@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1440">
+  <defs>
+    <style>
+      .cls-1 {
+      fill: #6d87a8;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+      stroke-width: 0px;
+      }
+
+      .cls-2 {
+      fill: #feffff;
+      }
+
+      .cls-3 {
+      fill: #eaebeb;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="1440" height="1440" rx="216" ry="216"/> <!-- 여기에 rx와 ry 추가 -->
+  <circle class="cls-2" cx="720.2" cy="960.03" r="120"/>
+  <circle class="cls-3" cx="720.2" cy="719.97" r="120"/>
+  <circle class="cls-2" cx="479.8" cy="959.97" r="120"/>
+  <circle class="cls-2" cx="960.2" cy="959.97" r="120"/>
+  <circle class="cls-2" cx="479.8" cy="719.97" r="120"/>
+  <circle class="cls-2" cx="479.8" cy="479.97" r="120"/>
+  <circle class="cls-3" cx="720.2" cy="479.97" r="120"/>
+  <circle class="cls-3" cx="960.2" cy="719.97" r="120"/>
+  <circle class="cls-3" cx="960.2" cy="479.97" r="120"/>
+</svg>
