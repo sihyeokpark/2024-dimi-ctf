@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    <link rel="icon" href="./favicon.svg" type="image/x-icon">
+    <title>What is SQL-Injection</title>
+    <style>
+        .sql-comment { color: green; }
+    </style>
+    <script>
+        function updateQuery() {
+            const id = document.getElementById('idInput').value;
+            const pw = document.getElementById('pwInput').value;
+            const query = "SELECT * FROM users WHERE username = '" + id + "' AND password = '" + pw + "';";
+
+            const commentIndex = query.indexOf('--');
+            const endIndex = Math.min(
+                commentIndex >= 0 ? commentIndex : query.length,
+            );
+
+            const normalQuery = query.substring(0, endIndex);
+            const commentQuery = endIndex < query.length ? query.substring(endIndex) : '';
+
+            document.getElementById('sqlQuery').innerHTML = normalQuery + '<span class="sql-comment">' + commentQuery + '</span>';
+        }
+
+        function sendLoginRequest() {
+            const id = document.getElementById('idInput').value;
+            const pw = document.getElementById('pwInput').value;
+
+            const encodedData = 'id=' + encodeURIComponent(id) + '&pw=' + encodeURIComponent(pw);
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: encodedData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>What is SQL-Injection?</h1>
+    <p>ADMIN 계정으로 로그인하세요!</p>
+    <div class="loginContainer">
+        <table>
+            <tr>
+                <th>사용자</th>
+                <th>아이디</th>
+                <th>비밀번호</th>
+            </tr>
+            <tr>
+                <td>GUEST</td>
+                <td>guest</td>
+                <td>guest</td>
+            </tr>
+            <tr>
+                <td>ADMIN</td>
+                <td>admin</td>
+                <td>???</td>
+            </tr>
+        </table>
+        <form class="loginForm" onsubmit="sendLoginRequest(); return false;">
+            <input type="text" id="idInput" name="id" placeholder="아이디" oninput="updateQuery()" />
+            <input type="password" id="pwInput" name="pw" placeholder="비밀번호" oninput="updateQuery()" />
+            <button type="submit">로그인</button>
+        </form>
+    </div>
+    <p id="sqlQuery">SELECT * FROM users WHERE username = '' AND password = '';</p>
+</div>
+</body>
+</html>
