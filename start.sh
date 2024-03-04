@@ -22,3 +22,4 @@ docker run -dp 5014:3000 being_admin_is_easy_revenge
 docker run -dp 5015:26146 black_wane
 docker run -dp 5016:26146 blue_ocean_flower
 docker run -dp 5017:26146 climbing
+docker run -dp 5018:26146 weak_machinee
