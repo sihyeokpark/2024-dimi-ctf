@@ -1,6 +1,6 @@
 const express = require('express')
 
-const FLAG = 'DIMI{__Prot0__Po1luTion_is_H4rd}'
+const FLAG = 'DIMI{UNNIntend_Pro111to__}'
 const app = express()
 const PORT = 3000
 
