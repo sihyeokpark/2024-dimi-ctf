@@ -18,3 +18,7 @@ docker run -dp 5012:26146 this_can_do_everything
 docker run -dp 5013:26146 treasure_hunter
 
 docker run -dp 5014:3000 being_admin_is_easy_revenge
+
+docker run -dp 5015:26146 black_wane
+docker run -dp 5016:26146 blue_ocean_flower
+docker run -dp 5017:26146 climbing
