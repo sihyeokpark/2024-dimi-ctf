@@ -16,3 +16,5 @@ docker run -dp 5010:3001 cookie_from_lilpa
 docker run -dp 5011:60 bof_tut
 docker run -dp 5012:60 this_can_do_everything
 docker run -dp 5013:60 treasure_hunter
+
+docker run -dp 5014:3000 being_admin_is_easy_revenge
