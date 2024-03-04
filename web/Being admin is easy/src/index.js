@@ -24,7 +24,7 @@ app.get('/create', (req, res) => {
   const { user, name, position } = req.query
   const [lastName, firstName] = name.split(' ')
 
-  if (user === 'exon') res.send('exon is ADMIN!!! you can\'t change it!')
+  if (user === 'exon') return res.send('exon is ADMIN!!! you can\'t change it!')
   users[user] = {
     name: {
       firstName,
@@ -33,13 +33,14 @@ app.get('/create', (req, res) => {
     age: 17,
     position,
   }
-  res.send(`Create Profile Success! ${JSON.stringify(users[user])}`)
+  return res.send(`Create Profile Success! ${JSON.stringify(users[user])}`)
 })
 
 app.get('/change', (req, res) => {
   const { user, property, position } = req.query
   const previous = users[user][property]
   users[user][property] = position
+  if (property === 'type') return res.send('You can\'t change type!')
   res.send('Change Profile Success!')
   setTimeout(() => {
     users[user][property] = previous // rollback
@@ -59,10 +60,3 @@ app.get('/flag', (req, res) => {
 app.listen(3000, () => {
   console.log(`listening on port ${PORT}`)
 })
-
-
-/*
-1. http://localhost:3000/change?user=__proto__&property=type&position=admin
-2. http://localhost:3000/create?name=%EB%B0%95%20%EC%A2%85%ED%9C%98&user=wane&position=reversing
-
-*/
