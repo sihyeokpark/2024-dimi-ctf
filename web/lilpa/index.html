@@ -25,14 +25,15 @@
 
             if (response.status === 400) {
                 return 0;
+            } else if (response.status === 200) {
+                const data = await response.text();
+                alert(data);
+                return 1;
             }
-
-            const data = await response.text();
-            alert(data);
         }
 
         async function initState() {
-            if (await getFlag()) {
+            if (!await getFlag()) {
                 setCookie("GOSEGU", "yes", 7);
                 setCookie("INE", "yes", 7);
                 setCookie("JINGBURGER", "yes", 7);

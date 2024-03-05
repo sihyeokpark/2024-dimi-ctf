@@ -32,7 +32,7 @@ const insertUsers = () => {
         console.log('GUEST 사용자 추가됨');
     });
 
-    db.run(insertQuery, ['admin', 'N0w_y0u_kn0w_SQL_Injection', 1], (err) => {
+    db.run(insertQuery, ['admin', 'FAKE_FLAG', 1], (err) => {
         if (err) {
             return console.error(err.message);
         }
@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
         }
         if (row) {
             if (row.isAdmin) {
-                res.send("성공!\n" + "DIMI{N0w_y0u_kn0w_SQL_Injection}");
+                res.send("성공!\n" + "DIMI{FAKE_FLAG}");
             } else {
                 res.send("GUEST 로그인 성공!");
             }

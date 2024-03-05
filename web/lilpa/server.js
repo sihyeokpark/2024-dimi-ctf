@@ -17,7 +17,7 @@ app.post('/get-flag', (req, res) => {
     if (checkAllMembersYes(req)) {
         res.status(200).send("성공!\nDIMI{Every_G0t_Yummy_C00kie!}");
     } else {
-        res.status(400).send("Not all members have set their cookie to 'yes'");
+        res.status(400);
     }
 });
 
