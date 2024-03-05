@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    <link rel="icon" href="./favicon.svg" type="image/x-icon">
+    <title>Cookie from LILPA</title>
+    <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+
+        async function getFlag() {
+            const response = await fetch('/get-flag', {
+                method: 'POST',
+                credentials: 'include'
+            });
+
+            if (response.status !== 200) {
+                setCookie("GOSEGU", "yes", 7);
+                setCookie("INE", "yes", 7);
+                setCookie("JINGBURGER", "yes", 7);
+                setCookie("JURURU", "not yet", 7);
+                setCookie("VIICHAN", "no", 7);
+            }
+
+            const data = await response.text();
+            alert(data);
+        }
+    </script>
+</head>
+<body onload=getFlag()>
+<div class="container">
+    <h1>Cookie from LILPA</h1>
+    <p>모든 멤버에게 쿠키를 전달하세요!</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KE1hOb_tLtM?si=dNaRUqUV4lj0o-ZS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</body>
+</html>
