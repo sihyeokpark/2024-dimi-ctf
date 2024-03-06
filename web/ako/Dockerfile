@@ -10,4 +10,4 @@ COPY ./flag.txt /
 WORKDIR /wargame/deploy
 RUN pip install -r requirements.txt
 
-CMD ["python", "/wargame/deploy/main/app.py"]
+CMD ["python", "/wargame/deploy/app.py"]
