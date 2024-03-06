@@ -16,6 +16,11 @@ const users = {
   },
 }
 
+const isUser = (user) => {
+  for (let i in users) if (i === user) return true
+  return false
+}
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -39,7 +44,7 @@ app.get('/create', (req, res) => {
 app.get('/change', (req, res) => {
   const { user, property, position } = req.query
   const previous = users[user][property]
-  if (property === 'type') return res.send('You can\'t change type!')
+  if (isUser(user) && property === 'type') return res.send('You can\'t change user\'s type!')
   users[user][property] = position
   res.send('Change Profile Success!')
   setTimeout(() => {
