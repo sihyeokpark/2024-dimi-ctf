@@ -25,3 +25,4 @@ docker run -dp 5017:26146 climbing
 docker run -dp 5018:26146 weak_machinee
 
 docker run -dp 5019:3000 sql
+docker run -dp 5020:7770 funny_aes
