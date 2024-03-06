@@ -39,8 +39,8 @@ app.get('/create', (req, res) => {
 app.get('/change', (req, res) => {
   const { user, property, position } = req.query
   const previous = users[user][property]
-  users[user][property] = position
   if (property === 'type') return res.send('You can\'t change type!')
+  users[user][property] = position
   res.send('Change Profile Success!')
   setTimeout(() => {
     users[user][property] = previous // rollback
