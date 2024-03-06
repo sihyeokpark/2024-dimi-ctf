@@ -8,8 +8,6 @@ users = {
     'guest': 'guest'
 }
 
-flag = 'DIMI{ssT1_is_n0t_Super_Super_Terrible_1nj3ction}'
-
 @app.route('/')
 def index():
     return render_template('index.html')
