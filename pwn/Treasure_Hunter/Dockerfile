@@ -9,7 +9,7 @@ RUN apt-get -y install socat
 RUN adduser $user
 
 ADD ./flaf /home/$user/flaf
-ADD ./.flag /home/$user/.flag
+COPY ./.flag /home/$user/
 ADD ./prob /home/$user/prob
 
 RUN chown -R root:$user /home/$user/flaf
