@@ -29,8 +29,9 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/log', (req, res) => {
-  console.log(req.ip)
-  if (req.ip !== '127.0.0.1' && req.ip !== '::1') {
+  let reqIp = req.ip
+  if (reqIp.startsWith('::ffff:')) reqIp = reqIp.slice(7)
+  if (reqIp !== '127.0.0.1' && reqIp !== '::1') {
     const logs = alasql('SELECT * FROM logs')
     res.send(logs)
   } else {
