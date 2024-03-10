@@ -29,7 +29,7 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/log', (req, res) => {
-  if (ip.isPublic(req.ip)) {
+  if (req.ip !== '127.0.0.1' && req.ip !== '::1') {
     const logs = alasql('SELECT * FROM logs')
     res.send(logs)
   } else {
@@ -39,9 +39,9 @@ router.get('/log', (req, res) => {
 
 router.post('/log', async (req, res) => {
   const { url } = req.body
-  if (!ip.isPrivate(url)) {
+  if (ip.isPublic(url)) {
     try {
-      const { data } = await get(url)
+      const { data } = await get(`http://${url}`)
       console.log(data)
       return res.send(data)
     } catch(e) {
