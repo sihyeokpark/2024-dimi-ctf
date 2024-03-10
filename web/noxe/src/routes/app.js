@@ -40,10 +40,10 @@ router.get('/log', (req, res) => {
 })
 
 router.post('/log', async (req, res) => {
-  const { url } = req.body
-  if (ip.isPublic(url)) {
+  const url = new URL(req.body.url)
+  if (ip.isPublic(url.hostname)) {
     try {
-      const { data } = await get(`http://${url}`)
+      const { data } = await get(`http://${req.body.url}`)
       console.log(data)
       return res.send(data)
     } catch(e) {
