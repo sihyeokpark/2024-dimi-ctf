@@ -29,6 +29,7 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/log', (req, res) => {
+  console.log(req.ip)
   if (req.ip !== '127.0.0.1' && req.ip !== '::1') {
     const logs = alasql('SELECT * FROM logs')
     res.send(logs)
@@ -47,6 +48,8 @@ router.post('/log', async (req, res) => {
     } catch(e) {
       return res.send(e.message)
     }
+  } else {
+    return res.send('Invalid URL')
   }
 })
 
