@@ -31,4 +31,4 @@ docker run -dp 5023:26146 count_down
 docker run -dp 5024:26146 osu_overwatch_battleground
 
 
-docker run -dp 5023:3001 noxe
+docker run -dp 5025:3001 noxe
