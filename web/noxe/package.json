@@ -1,0 +1,21 @@
+{
+  "name": "frontend-sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alasql": "0.6.0",
+    "axios": "^1.6.7",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "ip": "1.1.8",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  }
+}
