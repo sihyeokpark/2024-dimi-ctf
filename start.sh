@@ -34,3 +34,4 @@ docker run -dp 5024:26146 osu_overwatch_battleground
 docker run -dp 5025:3001 noxe
 docker run -dp 5026:6666 raiden
 docker run -dp 5027:6667 furina
+docker run -dp 5028:26146 bakkuachigi
