@@ -3,7 +3,7 @@ const alasql = require('alasql')
 const crypto = require("crypto")
 const { v1 } = require('uuid')
 
-const PORT = 3001
+const PORT = 3002
 
 const adminRoutes = require('./routes/admin.js')
 const appRoutes = require('./routes/app.js')

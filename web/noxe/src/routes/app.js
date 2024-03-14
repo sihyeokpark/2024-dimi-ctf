@@ -4,7 +4,8 @@ const alasql = require('alasql')
 const ip = require('ip')
 const { get } = require('axios')
 
-const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
+const JWTKEY = require('fs').readFileSync('./src/jwt.key', 'utf8')
+// const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
 
 const router = express.Router()
 
