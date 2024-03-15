@@ -5,8 +5,7 @@ const { v1 } = require('uuid')
 
 const router = express.Router()
 
-const JWTKEY = require('fs').readFileSync('./src/jwt.key', 'utf8')
-// const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
+const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
 
 router.use((req, res, next) => {
   const { key } = req.query

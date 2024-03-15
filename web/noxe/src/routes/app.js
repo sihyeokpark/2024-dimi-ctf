@@ -4,8 +4,7 @@ const alasql = require('alasql')
 const ip = require('ip')
 const { get } = require('axios')
 
-const JWTKEY = require('fs').readFileSync('./src/jwt.key', 'utf8')
-// const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
+const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
 
 const router = express.Router()
 
@@ -41,11 +40,13 @@ router.get('/log', (req, res) => {
 })
 
 router.post('/log', async (req, res) => {
-  const url = new URL(`http://${req.body.url}`)
-  console.log(url.hostname)
-  if (ip.isPublic(url.hostname) && parseInt(url.hostname) !== NaN) {
+  const hostname = req.body.url.split(':')[0]
+  const port = req.body.url.split(':')[1].split('/')[0]
+  const path = req.body.url.split('/')[1]
+  console.log(hostname)
+  if (ip.isPublic(hostname) && parseInt(hostname) !== NaN) {
     try {
-      const { data } = await get(`http://${req.body.url}`)
+      const { data } = await get(`http://${hostname}:${port}/${path}`)
       console.log(data)
       return res.send(data)
     } catch(e) {
