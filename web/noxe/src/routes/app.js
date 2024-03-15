@@ -40,20 +40,24 @@ router.get('/log', (req, res) => {
 })
 
 router.post('/log', async (req, res) => {
-  const hostname = req.body.url.split(':')[0]
-  const port = req.body.url.split(':')[1].split('/')[0]
-  const path = req.body.url.split('/')[1]
-  console.log(hostname)
-  if (ip.isPublic(hostname) && parseInt(hostname)) {
-    try {
-      const { data } = await get(`http://${hostname}:${port}/${path}`)
-      console.log(data)
-      return res.send(data)
-    } catch(e) {
-      return res.send(e.message)
+  try {
+    const hostname = req.body.url.split(':')[0]
+    const port = req.body.url.split(':')[1].split('/')[0]
+    const path = req.body.url.split('/')[1]
+    console.log(hostname)
+    if (ip.isPublic(hostname) && parseInt(hostname)) {
+      try {
+        const { data } = await get(`http://${hostname}:${port}/${path}`)
+        console.log(data)
+        return res.send(data)
+      } catch(e) {
+        return res.send(e.message)
+      }
+    } else {
+      return res.send('Invalid URL')
     }
-  } else {
-    return res.send('Invalid URL')
+  } catch {
+    return res.send('error')
   }
 })
 
