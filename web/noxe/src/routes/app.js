@@ -42,6 +42,7 @@ router.get('/log', (req, res) => {
 
 router.post('/log', async (req, res) => {
   const url = new URL(`http://${req.body.url}`)
+  console.log(url.hostname)
   if (ip.isPublic(url.hostname) && parseInt(url.hostname) !== NaN) {
     try {
       const { data } = await get(`http://${req.body.url}`)
