@@ -44,7 +44,7 @@ router.post('/log', async (req, res) => {
   const port = req.body.url.split(':')[1].split('/')[0]
   const path = req.body.url.split('/')[1]
   console.log(hostname)
-  if (ip.isPublic(hostname) && parseInt(hostname) !== NaN) {
+  if (ip.isPublic(hostname) && parseInt(hostname)) {
     try {
       const { data } = await get(`http://${hostname}:${port}/${path}`)
       console.log(data)
