@@ -5,6 +5,7 @@ const { v1 } = require('uuid')
 
 const router = express.Router()
 
+const { adminId } = require('../index.js')
 const JWTKEY = require('fs').readFileSync('/app/src/jwt.key', 'utf8')
 
 router.use((req, res, next) => {
@@ -13,13 +14,8 @@ router.use((req, res, next) => {
     const data = jwt.verify(key, JWTKEY)
     console.log(data)
     
-    const users = alasql(`SELECT * FROM users`)
-    users.forEach((user) => {
-      if (user.id === data.id && data.isAdmin) {
-        return next()
-      }
-    })
-    return res.send('Invalid token')
+    if (data.id === adminId) return next()
+    else return res.send('Invalid token')
     
   } catch (e) {
     return res.send(e)
